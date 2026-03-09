@@ -1,0 +1,29 @@
+# Ignore dependency folders
+node_modules/
+frontend/node_modules/
+venv/
+env/
+.env/
+
+# Ignore build artifacts
+dist/
+frontend/dist/
+build/
+*.egg-info/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Ignore Git
+.git
+.gitignore
+
+# Ignore local logs
+data/monitoring_logs.csv
