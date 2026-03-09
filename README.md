@@ -11,6 +11,8 @@ pinned: false
 
 > A high-performance, end-to-end predictive analytics ecosystem designed to mitigate employee turnover through Machine Learning, Explainable AI (XAI), and Real-time MLOps monitoring.
 
+**[🚀 Live Demo on Hugging Face Spaces](https://huggingface.co/spaces/alfando/attrition-prediction-intelligence)**
+
 [![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
