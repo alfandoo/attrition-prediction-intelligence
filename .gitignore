@@ -33,3 +33,6 @@ Thumbs.db
 
 # Outputs (regenerate via notebooks)
 outputs/*.png
+
+# Local monitoring logs
+data/monitoring_logs.csv
