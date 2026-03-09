@@ -27,3 +27,8 @@ Thumbs.db
 
 # Ignore local logs
 data/monitoring_logs.csv
+
+# Ignore notebooks in Docker build (keep in Git)
+notebooks/
+*.ipynb
+.ipynb_checkpoints/
