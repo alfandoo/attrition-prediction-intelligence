@@ -1,12 +1,3 @@
----
-title: Employee Attrition Intelligence
-emoji: 🏢
-colorFrom: blue
-colorTo: indigo
-sdk: docker
-pinned: false
----
-
 # 🏢 Enterprise HR Intelligence: Employee Attrition Prediction 💎🛡️
 
 > A high-performance, end-to-end predictive analytics ecosystem designed to mitigate employee turnover through Machine Learning, Explainable AI (XAI), and Real-time MLOps monitoring.

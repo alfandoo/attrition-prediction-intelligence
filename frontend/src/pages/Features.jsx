@@ -73,16 +73,16 @@ export default function Features({ meta }) {
 
       <div className="cards-2">
         <div className="card">
-          <div className="section-title">Top 20 Impactful Factors</div>
+          <div className="section-title">Top 15 Impactful Factors</div>
           <p className="page-subtitle" style={{ marginBottom: '20px' }}>Ranking of variables most prioritized by the AI model when predicting attrition risk.</p>
           <div id="feat-bars" style={{ marginBottom: '30px' }}>
             {entries.map(([feat, val], i) => {
               const pct = (val / maxV) * 100;
               const isEng = engineered.includes(feat);
-              const gradient = isEng 
-                ? 'linear-gradient(90deg, #14b8a6 0%, #0d9488 100%)' 
+              const gradient = isEng
+                ? 'linear-gradient(90deg, #14b8a6 0%, #0d9488 100%)'
                 : `linear-gradient(90deg, ${colors[i % colors.length]} 0%, ${colors[(i + 1) % colors.length]} 100%)`;
-              
+
               return (
                 <div key={feat} className="progress-row" style={{ marginBottom: '12px' }}>
                   <div className="progress-label" title={feat} style={{ fontSize: '13px', fontWeight: 500 }}>
@@ -120,9 +120,9 @@ export default function Features({ meta }) {
                       <Cell key={`cell-${index}`} fill={pieColors[index % pieColors.length]} />
                     ))}
                   </Pie>
-                  <PieTooltip 
+                  <PieTooltip
                     contentStyle={{ border: 'none', borderRadius: '8px', boxShadow: 'var(--shadow-md)' }}
-                    formatter={(val) => (val * 100).toFixed(1) + '%'} 
+                    formatter={(val) => (val * 100).toFixed(1) + '%'}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -141,7 +141,7 @@ export default function Features({ meta }) {
           <div style={{ marginTop: '32px' }}>
             <div className="section-title">⭐ Strategic Deep Dive: Top 5 Factors</div>
             <div className="page-subtitle" style={{ marginBottom: '20px' }}>Technical explanation of why these factors are AI-prioritized.</div>
-            
+
             <div className="insight-list" style={{ gap: '12px' }}>
               {[
                 { t: 'Total Experience', d: 'Senior employees often carry institutional knowledge and show higher stability risks if career plateaus occur.', c: 'var(--blue)' },
@@ -152,7 +152,7 @@ export default function Features({ meta }) {
               ].map((item, idx) => (
                 <div key={idx} className="insight-item" style={{ borderLeftColor: item.c, background: 'white', border: '1px solid var(--border)', borderLeftWidth: '4px' }}>
                   <div className="insight-text">
-                    <strong style={{ color: 'var(--ink)' }}>{idx + 1}. {item.t}</strong><br/>
+                    <strong style={{ color: 'var(--ink)' }}>{idx + 1}. {item.t}</strong><br />
                     <span style={{ color: 'var(--muted)', fontSize: '12px' }}>{item.d}</span>
                   </div>
                 </div>
