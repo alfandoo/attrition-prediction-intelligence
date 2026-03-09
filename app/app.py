@@ -259,10 +259,20 @@ async def predict_attrition(data: PredictRequest):
 
     # Predict using the trained model
     start_time = time.time()
-    prob = float(model.predict_proba(df_scaled)[0][1])
+    raw_prob = float(model.predict_proba(df_scaled)[0][1])
+    
+    # Recalibrate probability for UI display (Temperature Scaling)
+    # The LogReg model + SMOTE clusters probabilities tightly around 0.35 - 0.65.
+    # T=0.22 stretches logit so that 0.4 becomes ~0.15 and 0.68 becomes ~0.95.
+    import math
+    safe_prob = max(0.001, min(0.999, raw_prob))
+    logit = math.log(safe_prob / (1 - safe_prob))
+    scaled_logit = logit / 0.22
+    prob = float(1 / (1 + math.exp(-scaled_logit)))
+    
     latency_ms = int((time.time() - start_time) * 1000)
     
-    print(f"Prediction Request processed. Probability: {prob:.4f} ({latency_ms}ms)")
+    print(f"Prediction Request processed. Raw: {raw_prob:.4f} -> Scaled: {prob:.4f} ({latency_ms}ms)")
     
     # SHAP Explanations
     shap_vals, expected, explanation = get_shap_explanation(model, df_scaled, selected_features or feature_names)
@@ -277,7 +287,7 @@ async def predict_attrition(data: PredictRequest):
         writer.writerow([
             datetime.now().isoformat(), 
             prob, 
-            "Yes" if prob >= 0.098 else "No",
+            "Yes" if mode == 'risk' else "No",
             latency_ms,
             data.income,
             data.age,
