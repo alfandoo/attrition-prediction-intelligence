@@ -76,25 +76,12 @@ export default function Predictor() {
         env_sat: 4,
         rel_sat: 4,
       };
-    } else if (type === "mid") {
+    } else if (type === 'mid') {
       data = {
-        income: rnd(4000, 5500),
-        age: rnd(28, 38),
-        exp: rnd(5, 9),
-        tenure: rnd(3, 6),
-        dist: rnd(10, 15),
-        jobsat: rnd(2, 3),
-        wlb: rnd(2, 3),
-        ot: rnd(0, 1),
-        travel: rnd(0, 1),
-        stock: rnd(0, 1),
-        marital: rnd(0, 1),
-        companies: rnd(2, 4),
-        daily_rate: rnd(600, 900),
-        manager_tenure: rnd(2, 4),
-        role_tenure: rnd(2, 4),
-        env_sat: rnd(2, 3),
-        rel_sat: rnd(2, 3),
+        income: rnd(4000, 6000), age: rnd(28, 38), exp: rnd(5, 9), tenure: rnd(3, 6), dist: rnd(10, 15),
+        jobsat: rnd(2, 3), wlb: rnd(2, 3), ot: 0, travel: rnd(0, 1), stock: rnd(0, 1),
+        marital: rnd(0, 1), companies: rnd(2, 4), daily_rate: rnd(600, 900),
+        manager_tenure: rnd(2, 4), role_tenure: rnd(2, 4), env_sat: rnd(2, 3), rel_sat: rnd(2, 3)
       };
     } else if (type === "high") {
       data = {
