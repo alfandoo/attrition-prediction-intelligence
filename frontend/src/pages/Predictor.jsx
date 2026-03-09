@@ -23,6 +23,31 @@ export default function Predictor() {
 
   const [result, setResult] = useState(null);
 
+  const generateStrategicInsight = (score, factors) => {
+    if (!factors || factors.length === 0) {
+      return score >= 0.7 ? 'Immediate personal intervention from HR and Management is required.' : score >= 0.4 ? 'Regular review of work-life balance and satisfaction is recommended.' : 'Employee shows stable loyalty patterns based on current profile parameters.';
+    }
+    
+    // Capitalize first letter and add spaces to camel case / pascal case feature names
+    const formatFeature = (str) => {
+      const formatted = str.replace(/([A-Z])/g, ' $1').trim().replace(/_/g, ' ');
+      return formatted;
+    };
+
+    const topFactorNames = factors.slice(0, 3).map(f => formatFeature(f.f));
+    const factorList = topFactorNames.length > 1 
+      ? topFactorNames.slice(0, -1).join(', ') + ' and ' + topFactorNames[topFactorNames.length - 1]
+      : topFactorNames[0];
+
+    if (score >= 0.7) {
+      return `Critical attrition risk detected. Immediate intervention is required specifically addressing issues related to ${factorList}.`;
+    } else if (score >= 0.4) {
+      return `Moderate retention risk. Management should initiate a proactive review focusing on ${factorList} to prevent further disengagement.`;
+    } else {
+      return `Strong retention profile. The employee's stability is currently driven by positive indicators such as ${factorList}.`;
+    }
+  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: Number(e.target.value) });
   };
@@ -522,21 +547,9 @@ export default function Predictor() {
                 </div>
               </div>
               <div style={{ padding: "24px" }}>
-                <div className="section-title" style={{ fontSize: "11px" }}>
-                  Strategic Insight
-                </div>
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "var(--muted)",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  {result.score >= 0.7
-                    ? "Immediate personal intervention from HR and Management is required."
-                    : result.score >= 0.4
-                      ? "Regular review of work-life balance and satisfaction is recommended."
-                      : "Employee shows stable loyalty patterns based on current profile parameters."}
+                <div className="section-title" style={{ fontSize: '11px' }}>Strategic Insight</div>
+                <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: '1.6' }}>
+                  {generateStrategicInsight(result.score, result.factors)}
                 </p>
 
                 <div
