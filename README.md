@@ -1,12 +1,3 @@
----
-title: Attrition Prediction Intelligence
-emoji: 🏢
-colorFrom: blue
-colorTo: indigo
-sdk: docker
-pinned: false
----
-
 # Attrition Prediction Intelligence
 
 An end-to-end machine learning application for exploring and predicting employee attrition using the IBM HR Analytics dataset.
@@ -437,3 +428,5 @@ This project demonstrates an end-to-end ML workflow beyond model training:
 **Alfando**
 
 Junior Data Scientist · AI/ML Engineer · Software Engineer
+
+[GitHub](https://github.com/alfandoo)
