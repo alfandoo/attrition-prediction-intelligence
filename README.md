@@ -334,69 +334,6 @@ pytest
 ```
 
 ---
-
-## Run Locally
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/alfandoo/attrition-prediction-intelligence.git
-cd attrition-prediction-intelligence
-```
-
-### 2. Install Python dependencies
-
-```bash
-python -m venv venv
-```
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-Linux/macOS:
-
-```bash
-source venv/bin/activate
-```
-
-Then install:
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Build the frontend
-
-```bash
-cd frontend
-npm install
-npm run build
-cd ..
-```
-
-### 4. Start the application
-
-```bash
-python app/app.py
-```
-
-The FastAPI application serves the built React frontend and starts on the configured `PORT`, with `7860` used as the default.
-
----
-
-## Docker
-
-The application can also be run using Docker:
-
-```bash
-docker compose up --build
-```
-
----
-
 ## Key Takeaways
 
 This project demonstrates an end-to-end ML workflow beyond model training:
@@ -428,5 +365,3 @@ This project demonstrates an end-to-end ML workflow beyond model training:
 **Alfando**
 
 Junior Data Scientist · AI/ML Engineer · Software Engineer
-
-[GitHub](https://github.com/alfandoo)
