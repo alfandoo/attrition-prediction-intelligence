@@ -7,109 +7,433 @@ sdk: docker
 pinned: false
 ---
 
-# 🏢 Enterprise HR Intelligence: Employee Attrition Prediction 💎🛡️
+# Attrition Prediction Intelligence
 
-> A high-performance, end-to-end predictive analytics ecosystem designed to mitigate employee turnover through Machine Learning, Explainable AI (XAI), and Real-time MLOps monitoring.
+An end-to-end machine learning application for exploring and predicting employee attrition using the IBM HR Analytics dataset.
 
-**[🚀 Live Demo on Hugging Face Spaces](https://huggingface.co/spaces/alfando/attrition-prediction-intelligence)**
+The project covers the full workflow from **data analysis and feature engineering to model training, explainability, API serving, dashboard development, and basic model monitoring**.
 
-[![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
-[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker)](https://www.docker.com/)
+**Live Demo:** [Hugging Face Spaces](https://huggingface.co/spaces/alfando/attrition-prediction-intelligence)
 
 ---
 
-## 🏛️ Project Methodology: CRISP-DM Framework
+## Overview
 
-This project follows the **CRISP-DM** (CRoss Industry Standard Process for Data Mining) methodology to ensure data-driven decisions translate into measurable business value.
+Employee attrition is treated as a binary classification problem:
 
-### 📊 1. Business Understanding
-*   **The Problem**: High employee attrition causes significant financial strain, with replacement costs ranging from **$15,000 to $30,000 per employee** (recruitment, onboarding, productivity loss).
-*   **Objective**: Develop a "Predictive Empathy" system—identifying high-risk employees before they resign to allow for proactive HR intervention.
-*   **Success Metric**: **Recall (Target > 70%)**. In retention, the cost of a "False Negative" (missing an employee who leaves) is far higher than a "False Positive" (interviewing someone who stays).
+- **0 — Stay**
+- **1 — Leave**
 
-### 🔍 2. Data Understanding
-*   **Source**: IBM HR Analytics Dataset (1,470 employees, 35 attributes).
-*   **Key Exploratory Findings**:
-    *   **Burnout Indicator**: Employees with consistent **Overtime** have a **3.2x higher** risk of attrition.
-    *   **The Tenure "Danger Zone"**: Peak turnover occurs during the **first 0-3 years**, suggesting a need for better early-stage cultural integration.
-    *   **Income Alignment**: Attrition is strongly correlated with **Salary Disparity** relative to industry standards for specific roles like *Laboratory Technicians*.
+The main modeling goal is to identify employees with higher attrition risk while keeping the model interpretable enough to understand which factors contribute to each prediction.
 
-### 🧪 3. Data Preparation
-*   **Synthetic Feature Engineering**: Developed advanced features to capture hidden signals:
-    *   `Income_per_Age`: Proxy for perceived financial success.
-    *   `Years_per_Promotion`: Measure of career stagnation.
-    *   `Satisfaction_Score`: Aggregated sentiment across environment, relationships, and job roles.
-*   **Class Imbalance Handling**: Applied **SMOTE** (Synthetic Minority Over-sampling Technique) to ensure the model learns effectively from high-churn patterns.
-*   **Feature Selection**: Implemented a **Hybrid Selection Pipeline** using **Boruta** (all-relevant selection) and **Recursive Feature Elimination (RFE)** to isolate the most impactful variables.
-
-### 🤖 4. Modeling & Science
-*   **Algorithm**: **Logistic Regression (Fine-Tuned)**. Selected for its high transparency and reliability in enterprise settings.
-*   **Optimization**: Used **Optuna** for Bayesian hyperparameter tuning, specifically optimizing for the **F1-Score/Recall** tradeoff.
-*   **Explainable AI (XAI)**: Integrated **SHAP (SHapley Additive exPlanations)** to transform "black-box" predictions into actionable insights. Every prediction comes with a visual breakdown of *why* an employee is at risk.
-
-### 📈 5. Evaluation & Validation
-*   **Performance Metrics**:
-    *   **ROC-AUC**: **0.8246**, indicating robust discriminative power.
-    *   **Recall**: **0.70**, successfully identifying 7 out of 10 employees who actually left.
-*   **Business Validation**: The model effectively segments the workforce into risk tiers (Low, Medium, High), allowing HR to prioritize high-value assets.
-
-### 🚀 6. Deployment & MLOps
-*   **Backend Architecture**: **FastAPI** provides a high-performance, asynchronous interface for real-time inference.
-*   **Frontend Ecosystem**: **React.js** with a premium *Glassmorphism* dashboard, providing stakeholders with an executive-level summary of organizational health.
-*   **System Integrity**: 
-    *   **ML Monitoring**: Real-time tracking of **Prediction Drift** and **Feature Drift (PSI)**.
-    *   **Hardware Telemetry**: Integrated `psutil` to monitor server latency and resource utilization.
+The project uses **Recall** as an important evaluation metric because false negatives represent employees who leave but are classified as likely to stay.
 
 ---
 
-## 🚀 Key Differentiators
+## What This Project Covers
 
-| Feature | Description |
-| :--- | :--- |
-| **Executive Dashboard** | Premium state-of-the-art UI for HR stakeholders to visualize workforce stability. |
-| **XAI SHAP Reports** | Individualized risk factor analysis—no more "guesswork" in retention. |
-| **Scenario Simulator** | A "What-If" tool to test how salary changes or overtime reduction affects risk. |
-| **Automated Pipeline** | Fully Dockerized environment for consistent deployment across staging and production. |
-
----
-
-## 🛠️ Strategic Business Recommendations
-
-Based on empirical data and model findings, the following interventions are recommended:
-1.  **Retention Alert Systems**: Trigger mandatory 1-on-1s when an employee crosses the **15% Overtime Threshold** for two consecutive months.
-2.  **Market Calibration**: Perform semi-annual salary audits for *Sales Executives* and *Lab Technicians* to address the income disparity drivers.
-3.  **Tenure Support**: Enhance the **12-month Mentorship Program** specifically for employees in years 1-3 to bridge the "Danger Zone" gap.
-
----
-
-## 🎯 Conclusion
-
-This project demonstrates that employee attrition is not a random occurrence but a pattern-driven phenomenon that can be managed with high precision. By leveraging **Explainable AI (SHAP)** alongside a robust **CRISP-DM** workflow, we transition HR from a "reactive" stance to a **"predictive" strategic partner**. 
-
-The system's ability to achieve a **70% Recall rate** ensures that the majority of attrition risks are addressed before they impact the bottom line, potentially saving the organization hundreds of thousands of dollars in annual turnover costs. This repository serves as a blueprint for enterprise-grade ML applications where transparency, business ROI, and MLOps integrity are non-negotiable.
-
----
-
-## 💻 Setup & Installation
-
-### 1. Backend & ML Environment
-```bash
-python -m venv venv
-source venv/Scripts/activate # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
-python app/app.py
+```text
+Raw HR Data
+    ↓
+Data Cleaning & Feature Engineering
+    ↓
+Train / Test Preparation
+    ↓
+Model Comparison
+    ├── Logistic Regression
+    ├── Random Forest
+    └── XGBoost
+    ↓
+Hyperparameter Tuning
+    ↓
+Model Evaluation
+    ↓
+SHAP Explanation
+    ↓
+FastAPI Inference API
+    ↓
+React Dashboard
+    ↓
+Prediction & Feature Monitoring
 ```
 
-### 2. Frontend Dashboard
+---
+
+## Dataset
+
+This project uses the **IBM HR Analytics Employee Attrition & Performance** dataset.
+
+- **1,470 employees**
+- **35 original attributes**
+- Binary target: `Attrition`
+- The dataset is imbalanced, with significantly fewer attrition cases than non-attrition cases.
+
+Features include employee information related to:
+
+- Age
+- Monthly income
+- Total working years
+- Years at company
+- Overtime
+- Job satisfaction
+- Work-life balance
+- Distance from home
+- Stock option level
+- Years with current manager
+
+---
+
+## Data Preparation
+
+The preprocessing pipeline includes data cleaning, encoding, scaling, and feature engineering.
+
+Examples of engineered features used in the project include:
+
+- `Income_per_Age`
+- `TotalSatisfaction`
+- `Overtime_Flag`
+- `Experience_Company_Ratio`
+- `Years_per_Promotion`
+
+The project also handles class imbalance during model development and uses feature selection before final model training.
+
+---
+
+## Modeling
+
+Three classification algorithms are implemented:
+
+| Model | Purpose |
+| --- | --- |
+| Logistic Regression | Interpretable baseline and final deployed model |
+| Random Forest | Non-linear tree-based comparison |
+| XGBoost | Gradient-boosting comparison |
+
+Hyperparameter optimization is implemented with **Optuna** and stratified 5-fold cross-validation.
+
+The tuning pipeline can optimize metrics such as Recall depending on the modeling objective.
+
+---
+
+## Model Evaluation
+
+The project evaluates models using:
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
+- Confusion Matrix
+- ROC Curve
+
+### Deployed model
+
+The current application uses a tuned **Logistic Regression** model.
+
+During model-selection experiments, the tuned Logistic Regression recorded a cross-validation ROC-AUC of approximately **0.8246**.
+
+The stored held-out evaluation artifact reports:
+
+| Metric | Result |
+| --- | ---: |
+| ROC-AUC | **0.7744** |
+| Attrition Recall | **0.7021** |
+| Attrition Precision | **0.3084** |
+| Attrition F1-score | **0.4286** |
+| Accuracy | **0.7007** |
+
+### Confusion Matrix
+
+| | Predicted Stay | Predicted Leave |
+| --- | ---: | ---: |
+| Actual Stay | 173 | 74 |
+| Actual Leave | 14 | 33 |
+
+The model identifies approximately **70% of employees who left** in the held-out evaluation set.
+
+The relatively lower precision reflects the trade-off of prioritizing recall in an imbalanced attrition problem.
+
+---
+
+## Explainable Predictions
+
+Predictions are accompanied by **SHAP-based feature explanations**.
+
+Instead of returning only an attrition probability, the application identifies factors that contributed most strongly to the prediction.
+
+Examples of influential features in the saved evaluation artifact include:
+
+- Total Working Years
+- Years at Company
+- Overtime
+- Stock Option Level
+- Satisfaction
+- Years with Current Manager
+- Age
+
+This allows users to inspect why a specific employee received a higher or lower predicted attrition risk.
+
+---
+
+## Application
+
+The trained model is exposed through a **FastAPI** backend and consumed by a **React** dashboard.
+
+### Prediction flow
+
+```text
+User Input
+    ↓
+React Dashboard
+    ↓
+FastAPI /api/predict
+    ↓
+Preprocessing Pipeline
+    ↓
+Logistic Regression
+    ↓
+Attrition Probability
+    ↓
+SHAP Explanation
+    ↓
+Risk Factors & Recommendations
+```
+
+The API accepts employee information such as income, age, work experience, tenure, overtime, job satisfaction, and work-life balance.
+
+---
+
+## Dashboard
+
+The frontend is built with:
+
+- React 19
+- Vite
+- Recharts
+- Lucide React
+
+The dashboard provides views for:
+
+- Employee attrition prediction
+- Attrition probability
+- Risk factors
+- Model comparison
+- Exploratory data analysis
+- Monitoring information
+
+---
+
+## Monitoring
+
+Each prediction request records selected serving information including:
+
+- Timestamp
+- Prediction probability
+- Prediction class
+- Inference latency
+- Monthly income
+- Age
+- Overtime
+
+The monitoring endpoint uses these logs to provide basic indicators for:
+
+### Prediction distribution
+
+Compares the proportion of predicted attrition and non-attrition cases.
+
+### Feature drift
+
+Tracks changes in selected serving features:
+
+- Monthly Income
+- Age
+- Overtime
+
+### System telemetry
+
+Uses `psutil` to expose CPU and memory usage.
+
+This monitoring implementation is intended as a portfolio demonstration of serving-time observability rather than a full production MLOps platform.
+
+---
+
+## Tech Stack
+
+### Machine Learning
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- XGBoost
+- Optuna
+- SHAP
+
+### Backend
+
+- FastAPI
+- Uvicorn
+- Pydantic
+
+### Frontend
+
+- React 19
+- Vite
+- Recharts
+
+### Engineering
+
+- Docker
+- Docker Compose
+- Joblib
+- Pytest
+- Hugging Face Spaces
+
+---
+
+## Project Structure
+
+```text
+attrition-prediction-intelligence/
+│
+├── app/
+│   ├── app.py
+│   └── utils.py
+│
+├── data/
+│
+├── frontend/
+│   └── React + Vite application
+│
+├── models/
+│   └── trained model and evaluation artifacts
+│
+├── notebooks/
+│   └── experimentation and analysis
+│
+├── src/
+│   ├── preprocessing.py
+│   ├── modeling.py
+│   └── evaluation.py
+│
+├── tests/
+│   └── test_pipeline.py
+│
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Testing
+
+The repository includes tests for key ML pipeline behavior, including:
+
+- Risk-level mapping
+- Input preprocessing
+- Expected feature structure
+
+Run the tests with:
+
+```bash
+pytest
+```
+
+---
+
+## Run Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/alfandoo/attrition-prediction-intelligence.git
+cd attrition-prediction-intelligence
+```
+
+### 2. Install Python dependencies
+
+```bash
+python -m venv venv
+```
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Linux/macOS:
+
+```bash
+source venv/bin/activate
+```
+
+Then install:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Build the frontend
+
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run build
+cd ..
+```
+
+### 4. Start the application
+
+```bash
+python app/app.py
+```
+
+The FastAPI application serves the built React frontend and starts on the configured `PORT`, with `7860` used as the default.
+
+---
+
+## Docker
+
+The application can also be run using Docker:
+
+```bash
+docker compose up --build
 ```
 
 ---
-<p align="center">
-  <b>Designed & Built by Alfando — Attrition Prediction Intelligence</b>
-</p>
+
+## Key Takeaways
+
+This project demonstrates an end-to-end ML workflow beyond model training:
+
+- Structuring a classification problem around a business objective
+- Handling imbalanced data
+- Comparing multiple machine learning models
+- Hyperparameter tuning with cross-validation
+- Evaluating classification trade-offs
+- Explaining individual predictions with SHAP
+- Serving a model through FastAPI
+- Building a React interface around the model
+- Recording inference activity for basic monitoring
+- Packaging and deploying the application with Docker
+
+---
+
+## Limitations
+
+- The IBM HR dataset is small and intended primarily for analytics and learning use cases.
+- Predictions should not be interpreted as real HR decisions.
+- The monitoring implementation uses local prediction logs and simple baseline comparisons rather than a dedicated production monitoring platform.
+- The probability transformation used by the application is designed for the interface and should not be treated as formally calibrated probability without additional calibration validation.
+
+---
+
+## Author
+
+**Alfando**
+
+Junior Data Scientist · AI/ML Engineer · Software Engineer
